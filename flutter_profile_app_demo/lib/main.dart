@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_profile_app_demo/widgets/profile_detail.dart';
+import 'package:flutter_profile_app_demo/widgets/profile_image.dart';
 
 void main() {
   runApp(const MainApp());
@@ -14,10 +16,10 @@ class MainApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Profile App Demo')
         ),
-        body: Column(
+        body: const Column(
           children: [
             // header
-            const Padding(
+            Padding(
               padding: EdgeInsets.all(16.0),
               child: Text(
                 'Employee Profile',
@@ -29,19 +31,9 @@ class MainApp extends StatelessWidget {
               )
             ),
             // Profile image
-            Container(
-              width: 250.0,
-              height: 250.0,
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                  image: AssetImage('images/sp_bob.jpg'),
-                  fit: BoxFit.cover,
-                  )
-              )
-            ),
+           ProfileImage('images/sp_bob.jpg'),
             // Profile name
-            const Padding(padding: EdgeInsets.all(16.0),
+            Padding(padding: EdgeInsets.all(16.0),
             child: Text(
               'Spongebob',
               style: TextStyle(
@@ -51,24 +43,11 @@ class MainApp extends StatelessWidget {
             )
             ),
             //positioning
-            const Padding(padding: EdgeInsets.only(left: 16.0),
-            child: Row(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text(
-                  'Position:',
-                  style: TextStyle(fontSize: 20.0,
-                   fontWeight: FontWeight.bold
-                  
-                  ),
-                 
-                 
-                ),
-                 Text(
-                    'Developer',
-                    style: TextStyle(fontSize: 20.0)
-                  )
+                ProfileDetail('Position: ', 'QA Analyst')               
               ]
-            )
             )
           ]
         )
