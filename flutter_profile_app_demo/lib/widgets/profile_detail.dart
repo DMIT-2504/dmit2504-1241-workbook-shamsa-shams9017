@@ -18,9 +18,10 @@ class ProfileDetail extends StatelessWidget {
       ),
        Text(
         value,
-        style: const TextStyle(
+        style: TextStyle(
           fontSize: 20.0,
-          fontWeight: FontWeight.bold
+          fontWeight: FontWeight.bold,
+          color: Theme.of(context).textTheme.bodyLarge!.color
         )
       )
     ],

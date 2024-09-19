@@ -12,6 +12,7 @@ class MyHomePage extends StatelessWidget{
         appBar: AppBar(
           title: const Text('Profile App Demo')
         ),
+        //backgroundColor: Theme.of(context).colorScheme.primary,
         body: const Column(
           children: [
             // header
