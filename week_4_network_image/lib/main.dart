@@ -14,7 +14,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Network Image',
-      home: ImageScreen()
+      home: ImageScreen() // stateful widget passed here
     );
   }
 }
@@ -25,6 +25,7 @@ class MainApp extends StatelessWidget {
 class ImageScreen extends StatefulWidget{
 
   //this function instantiates a state object
+  //the state object handles the changes to the data (state)
   @override
   _ImageState createState(){
     return _ImageState();
@@ -35,7 +36,7 @@ class ImageScreen extends StatefulWidget{
 
 class _ImageState extends State<ImageScreen>{
   
-  String? _imageURL;
+  String? _imageURL; //variable to track image data
 
   //call the endpoint
   //callback to get the image
@@ -82,7 +83,7 @@ class _ImageState extends State<ImageScreen>{
             height: 20
           ),
           //button to load new image
-          //trigger UI rebuild
+          //trigger UI rebuild with click
           ElevatedButton(onPressed: _fetchImage, 
             child: Text('Load Image')
           )
