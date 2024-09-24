@@ -14,11 +14,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Network Image',
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+      home: ImageScreen()
     );
   }
 }
@@ -28,7 +24,11 @@ class MainApp extends StatelessWidget {
 
 class ImageScreen extends StatefulWidget{
 
-
+  //this function instantiates a state object
+  @override
+  _ImageState createState(){
+    return _ImageState();
+  }
 }
 
 // State class
@@ -44,7 +44,8 @@ class _ImageState extends State<ImageScreen>{
 
     if(response.statusCode == 200){
       final data = json.decode(response.body);
-
+      
+      //rebuild UI once image is received
       setState(() {
         _imageURL = data['message'];
       });
@@ -63,6 +64,7 @@ class _ImageState extends State<ImageScreen>{
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
+          // image displayed here
           Container(
             height: 500,
             width: double.infinity, // this will take up the entire width of the screen
@@ -75,10 +77,12 @@ class _ImageState extends State<ImageScreen>{
               fit: BoxFit.contain  // this prevents cropping
             ) 
           ),
-
+          //space between image and button
           SizedBox(
             height: 20
           ),
+          //button to load new image
+          //trigger UI rebuild
           ElevatedButton(onPressed: _fetchImage, 
             child: Text('Load Image')
           )
