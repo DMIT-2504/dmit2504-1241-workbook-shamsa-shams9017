@@ -74,6 +74,12 @@ class _ImageState extends State<ImageScreen>{
     });
   }
 
+  // handle image change with two fingers
+
+  void _onTwoFingerGesture(){
+    _fetchImage();
+  }
+
   @override
   void initState(){
     super.initState();
@@ -97,6 +103,11 @@ class _ImageState extends State<ImageScreen>{
           GestureDetector(
             onTap: _onTap,
             onLongPress: _onLongPress,
+            onScaleStart: (values) { //onScaleStart expects function with args (values)
+              if(values.pointerCount == 2){ //the passed values provide info on how many fingers are touching the screen, in this case we are checking for two fingers
+                _onTwoFingerGesture();
+              }
+            },
             child: Container(
             height: 500,
             width: double.infinity, // this will take up the entire width of the screen
