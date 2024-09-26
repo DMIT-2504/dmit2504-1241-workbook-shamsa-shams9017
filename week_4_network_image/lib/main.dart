@@ -37,6 +37,8 @@ class ImageScreen extends StatefulWidget{
 class _ImageState extends State<ImageScreen>{
   
   String? _imageURL; //variable to track image data
+  int _likes = 0; //Like counter
+  int _disLikes = 0; // dislike counter
 
   //call the endpoint
   //callback to get the image
@@ -53,6 +55,31 @@ class _ImageState extends State<ImageScreen>{
     }
 
   }
+  
+  //function to handle image change and likes
+  void _onTap(){
+    _fetchImage().then((_){
+      setState(() {
+        _likes += 1;
+      });
+    });
+  }
+  
+  // handle image change and dislikes
+  void _onLongPress(){
+        _fetchImage().then((_){
+          setState(() {
+          _disLikes += 1;
+      });
+    });
+  }
+
+  @override
+  void initState(){
+    super.initState();
+    //perform any specific initializations
+    _fetchImage();
+  }
 
   @override
   Widget build(BuildContext context){
@@ -66,7 +93,11 @@ class _ImageState extends State<ImageScreen>{
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           // image displayed here
-          Container(
+          // wrap container with gesturedetector
+          GestureDetector(
+            onTap: _onTap,
+            onLongPress: _onLongPress,
+            child: Container(
             height: 500,
             width: double.infinity, // this will take up the entire width of the screen
             decoration: BoxDecoration(
@@ -78,17 +109,57 @@ class _ImageState extends State<ImageScreen>{
               fit: BoxFit.contain  // this prevents cropping
             ) 
           ),
+          ),
+          
           //space between image and button
           SizedBox(
             height: 20
           ),
-          //button to load new image
-          //trigger UI rebuild with click
-          ElevatedButton(onPressed: _fetchImage, 
-            child: Text('Load Image')
-          )
+          LikesDislikesText(like: true, num: _likes),
+
+          LikesDislikesText(like: false, num: _disLikes),
+
         ]
       ),
     ));
+  }
+}
+
+//display likes and dislikes counters with stateless widget 
+class LikesDislikesText extends StatelessWidget{
+
+  final bool like; // use this to determine which label to use
+  final int num; // value for like or dislike
+
+  const LikesDislikesText({this.like = true, this.num = 0, super.key});
+
+  @override
+  Widget build(BuildContext context){
+    return Padding(
+      padding: const EdgeInsets.only(
+        top: 16.0,
+        left: 16.0
+      ),
+      child: Row(
+        children: <Widget>[
+          //label, either like or dislike
+          Text(
+            like ? "Likes: " : "Dislikes: ",
+            style: const TextStyle(
+              fontSize: 24.0,
+              fontWeight: FontWeight.bold
+            )
+          ),
+          // value for like or dislike
+          Text(
+            '$num',
+            style: const TextStyle(
+              fontSize: 24.0,
+              fontWeight: FontWeight.bold
+            )
+          )
+        ]
+      )
+      );
   }
 }
