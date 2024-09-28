@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:week_4_input_widgets/simple_text_field.dart';
+import 'package:week_4_input_widgets/textfield_with_controller_stateless.dart';
+
 
 void main() {
   runApp(const MainApp());
@@ -12,7 +13,8 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: SimpleTextField()
+        body: //SimpleTextField()
+              SimpleTextFieldController()
       ),
     );
   }
