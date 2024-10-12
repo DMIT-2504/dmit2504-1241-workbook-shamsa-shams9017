@@ -36,6 +36,8 @@ class DatabaseHelper {
 
   ''');
 
+  
+
   }
 
   //methods to CRUD
@@ -45,7 +47,7 @@ class DatabaseHelper {
     
   }
 
-  Future<List<Map<String, dynamic>>> getUser() async {
+  Future<List<Map<String, dynamic>>> getUsers() async {
     final db = await database;
     return await db.query('users');
   }
@@ -60,12 +62,14 @@ class DatabaseHelper {
       whereArgs: [id]
     );
   }
-
+  // you can also do where '${id.toString()}; 
+  // but this is a security risk because of SQL injection (read more online)
+  // this is why we use the whereArgs attribute to pass the data
   Future<int> deleteUser(int id) async{
     final db = await database;
     return await db.delete(
       'users',
-      where: 'id = ?',
+      where: 'id = ?', 
       whereArgs: [id]      
     );
   }
