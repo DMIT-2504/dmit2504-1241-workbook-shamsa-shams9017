@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "360162016297",
+    "project_id": "dmit2504-firebase-in-class",
+    "storage_bucket": "dmit2504-firebase-in-class.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:360162016297:android:a2bbfe922c0d244c807038",
+        "android_client_info": {
+          "package_name": "com.example.week_7_firebase_in_class_demo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8krtCXY6SSwNEaVegdBH6Zkc5d1cMVok"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

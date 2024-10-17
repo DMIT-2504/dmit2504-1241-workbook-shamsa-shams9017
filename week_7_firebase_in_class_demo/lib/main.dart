@@ -1,10 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:week_7_firebase_in_class_demo/homepage.dart';
 import 'package:week_7_firebase_in_class_demo/login.dart';
 
 
-void main() async {
+Future<void> main() async {
   // firebase config 
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -40,7 +41,7 @@ class AuthUserChecker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //TODO: get logged in user
-    var user = null;
+    User? user = FirebaseAuth.instance.currentUser;
     return user == null ? LoginPage() : HomePage();
   }
 }

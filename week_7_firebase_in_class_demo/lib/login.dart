@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -7,17 +8,59 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   //TODO: get firebase auth instance
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   bool _isLoading = false;
   
   //TODO: update sign in and sign up functions below
   Future<void> _signIn() async {
-   
+   setState(() {
+
+    _isLoading = true;
+   });
+
+   try {
+    await _auth.signInWithEmailAndPassword(
+      email: _emailController.text.trim(),
+      password: _passwordController.text.trim());
+      // replace current page in stack with another
+      Navigator.of(context).pushReplacementNamed('/home');
+   }
+   catch(e){
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Error: $e'))
+    );
+   }
+   finally {
+    setState(() {
+      _isLoading = false;
+    });
+   }
   }
 
   Future<void> _signUp() async {
-    
+    setState(() {
+    _isLoading = true;
+   });
+
+   try {
+    await _auth.createUserWithEmailAndPassword(
+      email: _emailController.text.trim(),
+      password: _passwordController.text.trim());
+      // replace current page in stack with another
+      Navigator.of(context).pushReplacementNamed('/home');
+   }
+   catch(e){
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Error: $e'))
+    );
+   }
+   finally {
+    setState(() {
+      _isLoading = false;
+    });
+   }
   }
 
   @override

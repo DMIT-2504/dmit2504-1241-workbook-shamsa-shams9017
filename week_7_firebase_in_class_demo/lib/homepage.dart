@@ -1,10 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: get current logged in user
-    var user = null;
+    final User? user = FirebaseAuth.instance.currentUser;
 
     return Scaffold(
       appBar: AppBar(
@@ -14,6 +15,7 @@ class HomePage extends StatelessWidget {
             icon: Icon(Icons.logout),
             onPressed: () async {
               //TODO: sign out using firebase here
+              await FirebaseAuth.instance.signOut();
               Navigator.of(context).pushReplacementNamed('/login');
             },
           ),
