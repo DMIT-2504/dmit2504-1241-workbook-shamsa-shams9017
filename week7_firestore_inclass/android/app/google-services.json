@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1004167859400",
+    "project_id": "dmit2504-firestore",
+    "storage_bucket": "dmit2504-firestore.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1004167859400:android:2f397abc02266d8733a9fd",
+        "android_client_info": {
+          "package_name": "com.example.week7_firestore_inclass"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHcRqqzdfUAUScz1P-TJkU5S8XZ4caqbE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1004167859400:android:76e1a33d47416a4533a9fd",
+        "android_client_info": {
+          "package_name": "com.example.week_7_firestore_todo_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHcRqqzdfUAUScz1P-TJkU5S8XZ4caqbE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
