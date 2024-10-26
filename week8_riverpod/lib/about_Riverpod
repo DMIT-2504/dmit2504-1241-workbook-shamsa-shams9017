@@ -1,0 +1,28 @@
+
+Business logic encompasses the rules, computations, and processes that dictate how data is manipulated and how the application behaves in response to user interactions or other events. By separating this logic from the state, you ensure that your UI components remain focused solely on presentation.
+
+In Riverpod, business logic is typically encapsulated within StateNotifier or ChangeNotifier classes. These classes interact with the state providers to update and manage the state based on the business rules.
+
+With the state and business logic separated, UI components (Widgets) interact with them through Riverpod's providers. This ensures that the UI remains declarative and focused on rendering, while the underlying logic handles state changes.
+
+Riverpod uses several types of providers, each designed to manage different kinds of state and logic in a Flutter application. First, there is the Provider, which provides a read-only value that never changes throughout the application's lifecycle, ideal for static data or services that don’t need to be updated. Next is the StateProvider, which is used for managing simple mutable state, allowing you to update and read state easily, making it suitable for common tasks like toggling values or incrementing counters. For asynchronous operations, FutureProvider handles data that is fetched asynchronously, such as API calls, and manages loading, success, and error states, making it perfect for tasks like network requests. Similarly, StreamProvider manages asynchronous data streams, making it useful for handling real-time updates, such as WebSocket connections or Firebase streams.
+
+For more complex state management, StateNotifierProvider works in combination with StateNotifier to manage business logic and structured state updates, offering a robust solution for handling state changes based on user interactions or external events. ChangeNotifierProvider provides a ChangeNotifier, which is commonly used in Flutter apps to manage state and notify listeners when state changes occur, often used with Flutter’s ListenableBuilder. In Riverpod 2.x, NotifierProvider simplifies the creation of business logic classes without the need for StateNotifier, providing a more streamlined approach for managing state and logic in new projects. Lastly, Riverpod also offers autoDispose variants for all providers, which automatically dispose of their state when no longer in use, ensuring efficient memory management, especially for providers that are tied to transient views, such as those used during navigation transitions. These options together make Riverpod a versatile and powerful state management solution for Flutter applications.
+
+Why does Riverpod create a new instance of the state?
+
+Immutable state ensures that once a state object is created, it cannot change. This makes the flow of data and state transitions more predictable and easier to follow. When you create a new instance for each state change, you can trace the sequence of states over time, which simplifies debugging and reasoning about your code.
+
+Flutter's rendering engine can optimize widget rebuilds when it knows that data is immutable. If the state is immutable, Flutter can efficiently determine if widgets need to be re-rendered based on whether the state instance has changed. This can lead to performance improvements, especially in large applications with complex widget trees.
+
+Mutating existing state can lead to unintended side effects, especially in async tasks where multiple parts of the code might hold references to the same state object. By creating new instances, you ensure that changes in state do not unexpectedly affect other parts of the application that might be using the old state.
+
+Extending ConsumerWidget
+
+RiverPod provides a specialized widget called ConsumerWidget which we can extend to. We can get direct access to providers without needing to use Provider.of. There is a WidgetRef argument for it and this allows you to "watch" the provider and access its state or invoke actions without having to use other patterns like Consumer or manual state management. 
+
+WidgetRef.watch(provider) listens for changes in the provider’s state and rebuilds the widget when the provider changes.
+
+WidgetRef.read(provider) reads a provider without subscribing to changes (if you only need the current value once).
+
+WidgetRef.watch(provider.notifier) allows you to invoke actions on StateNotifier (or other provider types) that manage your state.
