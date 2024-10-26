@@ -16,7 +16,8 @@ class ItemsPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // ref.watch(provider) tells Riverpod to access the state and listen for its changes to rebuild UI
-    // ref.watch(notifier) tells Riverpod to access the state and but won't rebuild. Its to use different methods on the state.
+    // ref.watch(notifier) tells Riverpod to access the state and but won't rebuild. 
+    // We need it to use different operations on the state.
     final cartStateHandler = ref.watch(cartProvider.notifier);
     final productsList = ref.watch(productProvider); 
     
