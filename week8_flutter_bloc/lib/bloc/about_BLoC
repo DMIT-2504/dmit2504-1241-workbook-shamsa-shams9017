@@ -1,0 +1,16 @@
+BLoC is a design pattern (Business Logic Component)
+
+It separates the business logic and state from the UI.
+
+It is an event based pattern. Events are defined in a separate class. When an event is triggered from the UI,
+the necessary operations are executed.
+
+BlocProvider is used when you want to provide a single Bloc to the widget tree. It ensures that any widget within the tree can access and interact with that Bloc.
+
+MultiBlocProvider is used when you need to provide multiple Blocs simultaneously. It helps in organizing and managing multiple Blocs more efficiently without nesting multiple BlocProvider widgets.
+
+events are registered using on<Event>
+
+Cubit is a simplified version of a Bloc (Business Logic Component) in the Flutter Bloc library used for state management. Unlike Bloc, which relies on events to trigger state changes, Cubit directly exposes methods to update its state. This makes Cubit more straightforward and easier to implement for managing simple or less complex state scenarios.
+
+A Cubit has a simpler API because it does not require separate event classes. This reduction in code makes development faster and easier. With Cubit, you manage state directly by calling methods on the Cubit itself. It then emits new states automatically without additional steps. Cubit is ideal for straightforward state changes where using the full event-driven Bloc system is not necessary. Additionally, Cubit works well within Bloc's ecosystem. You can use Cubit alongside Blocs in the same project when needed.
