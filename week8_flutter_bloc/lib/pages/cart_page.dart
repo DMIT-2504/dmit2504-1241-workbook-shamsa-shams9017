@@ -20,7 +20,7 @@ class CartPage extends StatelessWidget {
       // By specifying <CartBloc, CartState>, 
       // you're telling BlocBuilder to listen to a CartBloc and 
       // rebuild the UI whenever a new CartState is emitted.
-      body: BlocBuilder<CartBloc, CartState>( //subscribes to the CartBloc instance provided higher up in the widget tree
+      body: BlocBuilder<CartCubit, CartState>( //subscribes to the CartBloc instance provided higher up in the widget tree
         builder: (context, cartState) {
           return cartState.cart.isEmpty
               ? const Center(child: Text('Cart is empty'))

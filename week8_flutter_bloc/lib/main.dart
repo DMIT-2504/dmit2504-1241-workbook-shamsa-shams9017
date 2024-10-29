@@ -19,7 +19,7 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider( // use multi provider if you need to epose more than one provider
+    return MultiBlocProvider( // use multi provider if you need to expose more than one provider
       providers: [
         BlocProvider(create: (context) => CartBloc()), // provide instance of the bloc class for cart
         BlocProvider(create: (context) => ProductBloc()..add(LoadProducts())),  // provide instance and dispatches event
