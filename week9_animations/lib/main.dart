@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:week9_animations/pages/explicit_animations.dart';
-import 'package:week9_animations/pages/implicit_animations.dart';
-import 'package:week9_animations/pages/transform_anims.dart';
 
 
 void main() {
@@ -15,8 +13,8 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: //PageThree(),
-       PageOne(),
-       //PageTwo()
+       //PageOne(),
+       PageTwo()
     );
   }
 }

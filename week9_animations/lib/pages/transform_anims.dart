@@ -3,10 +3,12 @@ import 'dart:math' as math;
 
 
 class PageThree extends StatelessWidget {
+  const PageThree({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Transforms')),
+      appBar: AppBar(title: const Text('Transforms')),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class PageOne extends StatefulWidget {
+  const PageOne({super.key});
+
   @override
   _PageOneState createState() => _PageOneState();
 }
@@ -21,37 +23,37 @@ class _PageOneState extends State<PageOne> with SingleTickerProviderStateMixin {
       setState(() {
         isScaledUp = true; 
       });
-      await Future.delayed(Duration(seconds: 2));
+      await Future.delayed(const Duration(seconds: 2));
 
       setState(() {
         rotationAngle += 360; 
       });
-      await Future.delayed(Duration(seconds: 2));
+      await Future.delayed(const Duration(seconds: 2));
 
       setState(() {
         isCapsule = true; 
       });
-      await Future.delayed(Duration(seconds: 2));
+      await Future.delayed(const Duration(seconds: 2));
 
       setState(() {
         isScaledUp = false; 
         isCapsule = false;
         rotationAngle = 0.0; 
       });
-      await Future.delayed(Duration(seconds: 2));
+      await Future.delayed(const Duration(seconds: 2));
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Implicit Animation')),
+      appBar: AppBar(title: const Text('Implicit Animation')),
       body: Center(
         child: AnimatedRotation(
-          duration: Duration(seconds: 1),
+          duration: const Duration(seconds: 1),
           turns: rotationAngle / 360,
           child: AnimatedContainer(
-            duration: Duration(seconds: 1),
+            duration: const Duration(seconds: 1),
             width: isScaledUp ? 200 : 20, 
             height: isScaledUp ? (isCapsule ? 60 : 200) : 20, 
             decoration: BoxDecoration(
@@ -60,12 +62,12 @@ class _PageOneState extends State<PageOne> with SingleTickerProviderStateMixin {
             ),
             child: Center(
               child: AnimatedDefaultTextStyle(
-                duration: Duration(seconds: 1),
+                duration: const Duration(seconds: 1),
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: isScaledUp ? 20 : 8, 
                 ),
-                child: Text('Animated Box'),
+                child: const Text('Animated Box'),
               ),
             ),
           ),
