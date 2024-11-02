@@ -1,0 +1,11 @@
+ The Animation class in Flutter is an abstract class that represents a value that changes over time. It is commonly used to create smooth transitions and animations in Flutter apps, like scaling, rotating, or changing colors. The Animation class itself doesn’t perform animations but provides a way to interpolate between values, like from 0 to 1 or between two colors. This class works alongside an AnimationController, which controls the timing of the animation, dictating when it starts, stops, or reverses. You can also define curves (e.g., ease-in, bounce) using the CurvedAnimation class to modify the animation’s pace. The Animation class can hold different types of values (like double, Color, or Offset) and allows Flutter to efficiently rebuild widgets at each frame to reflect the animated changes. By listening to the animation’s value as it progresses, widgets can be updated continuously, creating fluid and visually engaging transitions.
+ 
+ Tickers are primarily used to drive animations that need to be updated regularly over time, ensuring the animation moves smoothly from one frame to the next. In Flutter, AnimationController internally uses a ticker to control the animation’s progression. When you create an AnimationController, you typically initialize it with a TickerProvider, which supplies the ticker to handle timing updates. This is often done in a StatefulWidget by mixing in the SingleTickerProviderStateMixin to allow the widget to provide its own ticker.
+
+ a mixin is a class that provides additional functionality to other classes without being their parent class. They are used to allow multiple inheritance-like behavior, enabling classes to inherit specific functionality from multiple sources.
+
+SingleTickerProviderStateMixin allows the AnimationController to synchronize with the screen’s refresh rate, helping it run smoothly and efficiently. This is what vsync does — it connects the animation to the screen's "ticker," which updates with each frame (around 60 times per second on most screens).
+
+If you're using AnimationController directly, SingleTickerProviderStateMixin is commonly used. It provides vsync, which reduces resource usage by pausing the animation when it's not visible on the screen, leading to better performance.
+
+A Tween (short for "between") is used to interpolate between two values over time.
